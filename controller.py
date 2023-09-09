@@ -19,23 +19,23 @@ def start():
                 else:
                     view.print_message(text.error_save)
             case 3:
-                view.show_contacts(pb.contact, text.empty_book)
+                view.show_notes(pb.note, text.empty_book)
             case 4:
-                new = view.add_contact()
-                pb.add_contact(new)
+                new = view.add_note()
+                pb.add_note(new)
                 view.print_message(text.add_successful(new.get('name')))
             case 5:
                 word = view.search_word()
                 result = pb.search(word)
-                view.show_contacts(result, text.empty_search(word))
+                view.show_notes(result, text.empty_search(word))
             case 6:
-                repl_id = int(view.replace_contact())
-                new = view.add_contact()
+                repl_id = int(view.replace_note())
+                new = view.add_note()
                 pb.replace(repl_id, new)
                 view.print_message(text.repl_successful(new.get('name')))
             case 7:
-                del_id = view.del_contact()
-                name = pb.del_contact(del_id)
+                del_id = view.del_note()
+                name = pb.del_note(del_id)
                 view.print_message(text.del_successful(name))
             case 8:
                 if pb.check_on_exit():
