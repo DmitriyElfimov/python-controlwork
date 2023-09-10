@@ -15,7 +15,7 @@ def show_notes(book: dict[int:dict[str,str, str]], message):
     if book:
         max_name = []
         max_note = []
-        max_date = []
+        
         
         for note in book.values():
             max_name.append(len(note.get('name')))
@@ -31,6 +31,7 @@ def show_notes(book: dict[int:dict[str,str, str]], message):
         print('='*(size_name + size_note + 17) + '\n')
     else:
         print(message)
+
 
 def print_message(message: str):
     print('\n' + '='*len(message))
