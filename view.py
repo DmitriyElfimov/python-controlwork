@@ -1,5 +1,5 @@
 import text
-
+from datetime import date
 
 def menu():
     print(text.main_menu[0])
@@ -11,22 +11,24 @@ def menu():
             return int(select)
         print(text.input_error)
 
-def show_notes(book: dict[int:dict[str,str]], message):
+def show_notes(book: dict[int:dict[str,str, str]], message):
     if book:
         max_name = []
-        max_phone = []
-        max_comment = []
+        max_note = []
+        max_date = []
+        
         for note in book.values():
             max_name.append(len(note.get('name')))
-            max_phone.append(len(note.get('phone')))
-            max_comment.append(len(note.get('comment')))
+            max_note.append(len(note.get('note')))
+            
+            
         size_name = max(max_name)
-        size_phone = max(max_phone)
-        size_comment = max(max_comment)
-        print('\n' + '='*(size_name + size_phone + size_comment + 7))
+        size_note = max(max_note)
+        
+        print('\n' + '='*(size_name + size_note + 17))
         for index, note in book.items():
-            print(f'{index:>3}. {note.get("name"):<{size_name}} {note.get("phone"):<{size_phone}} {note.get("comment"):<{size_comment}}')
-        print('='*(size_name + size_phone + size_comment + 7) + '\n')
+            print(f'{index:>3}. {note.get("name"):<{size_name}} {note.get("note"):<{size_note}} {note.get("date")}')
+        print('='*(size_name + size_note + 17) + '\n')
     else:
         print(message)
 

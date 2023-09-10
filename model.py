@@ -1,4 +1,6 @@
 import json
+import datetime
+
 
 
 class NoteBook:
@@ -33,7 +35,7 @@ class NoteBook:
             return False
 
 
-    def search(self, word: str) -> dict[int:dict[str,str]]:
+    def search(self, word: str) -> dict[int:dict[str,str,str]]:
         result = {}
         for index, note in self.note.items():
             if word.lower() in ' '.join(note.values()).lower():
@@ -47,12 +49,14 @@ class NoteBook:
         return 1
 
 
-    def add_note(self, new: dict[str, str]):
+    def add_note(self, new: dict[str, str, str]):
+        
         note = {int(self.check_id()): new}
         self.note.update(note)
+        
 
 
-    def replace(self, index: int, dict: dict[str,str]):
+    def replace(self, index: int, dict: dict[str,str, str]):
         self.note[index] = dict
         
 
